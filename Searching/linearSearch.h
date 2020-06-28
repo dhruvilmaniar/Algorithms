@@ -24,7 +24,8 @@ int linearSearchArray(int *arr, int size_arr, int target)
     return -1;
 }
 
-
+// THis function takes int as argument and returns pointer to 
+// a structure of type node.
 struct node *linearSearchList(int target)
 {
     struct node *temp = HEAD;
