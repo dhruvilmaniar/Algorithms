@@ -7,6 +7,10 @@
 
 void merge(int *arr, int start, int mid, int end)
 {
+    int ii = start;
+    // while(ii<end)
+    //     printf("%d ", arr[ii++]);
+    // printf("|| ");
     int length_lefthalf = mid - start;
     int length_righthalf = end - mid;
 
@@ -28,6 +32,11 @@ void merge(int *arr, int start, int mid, int end)
         else
             arr[k] = righthalf[j++];
     }
+
+    ii = start;
+    // while(ii<end)
+    //     printf("%d ", arr[ii++]);
+    // printf("\n");
 }
 
 
@@ -35,6 +44,7 @@ void mergeSort(int *arr, int start, int end)
 {
     if (start<end)
     {
+        printf("%d to %d \n", start, end);
         int mid = (start+end)/2;
         mergeSort(arr, start, mid);
         mergeSort(arr, mid+1, end);
@@ -42,5 +52,3 @@ void mergeSort(int *arr, int start, int end)
         merge(arr, start, mid, end);
     }
 }
-
-
