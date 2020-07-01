@@ -2,50 +2,41 @@
 
 #include <stdio.h>
 
-#define MAX 10000
-
 
 void merge(int *arr, int start, int mid, int end)
 {
-    int ii = start;
-    // while(ii<end)
-    //     printf("%d ", arr[ii++]);
-    // printf("|| ");
-    int length_lefthalf = mid - start;
-    int length_righthalf = end - mid;
+    int leftLen = mid - start + 1;
+    int rightLen = end - mid;
 
-    int lefthalf[length_lefthalf+1], righthalf[length_righthalf+1];
+    int leftArr[leftLen], rightArr[rightLen];
 
-    for (int i = 0; i<length_lefthalf; i++)
-        lefthalf[i] = arr[start+i];
-    for (int i = 0; i<length_righthalf; i++)
-        righthalf[i] = arr[mid+i];
+    for (int i=0; i<leftLen; i++)
+        leftArr[i] = arr[start+i];
+    for (int j=0; j<rightLen; j++)
+        rightArr[j] = arr[mid+j+1];
 
-    lefthalf[length_lefthalf] = MAX;
-    righthalf[length_righthalf] = MAX;
-
-    int i=0, j=0;
-    for (int k = start; k<end; k++)
+    int i=0, j=0, k=start;
+    while(i < leftLen && j < rightLen)
     {
-        if (lefthalf[i] <= righthalf[j])
-            arr[k] = lefthalf[i++];
+        if (leftArr[i] <= rightArr[j])
+            arr[k++] = leftArr[i++];
         else
-            arr[k] = righthalf[j++];
+            arr[k++] = rightArr[j++];
     }
 
-    ii = start;
-    // while(ii<end)
-    //     printf("%d ", arr[ii++]);
-    // printf("\n");
+    while(i < leftLen)
+        arr[k++] = leftArr[i++];
+    while(j < rightLen)
+        arr[k++] = rightArr[j++];
 }
 
 
 void mergeSort(int *arr, int start, int end)
 {
-    if (start<end)
+    if (start < end)
     {
-        printf("%d to %d \n", start, end);
-        int mid = (start+end)/2;
+        int mid = start + (end-start)/2;
+
         mergeSort(arr, start, mid);
         mergeSort(arr, mid+1, end);
 
