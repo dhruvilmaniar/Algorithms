@@ -1,19 +1,22 @@
-#include <stdio.h>
-#include "InsertionSort.h"
+#include "../../include/Sorting/InsertionSort.h"
+#include "../../utils/print_utils.h"
+
+#define ARRAY_LENGTH 10
+
 
 int main()
 {
-    int arrLength = 10, i=0;
-    int arr[] = {4,2,6,1,7,33,3,8,5,0};
+    int arr[ARRAY_LENGTH];
 
-    printf("Before : \n");
-    while(i<arrLength)
-        printf("%d ", arr[i++]);
+    for(int i=0; i<ARRAY_LENGTH; i++)
+        arr[i] = rand() % 107;
 
-    printf("\n");
+    printf("Array before sorting : ");
+    printArray(arr, ARRAY_LENGTH);
 
-    insertionSort(arr, arrLength);
-    i = 0;
-    while(i<arrLength)
-        printf("%d ", arr[i++]);
+    // Average case time complexity of insertionSort is O(nlogn).
+    insertionSort(arr, ARRAY_LENGTH);
+
+    printf("Array after sorting : ");
+    printArray(arr, ARRAY_LENGTH);
 }

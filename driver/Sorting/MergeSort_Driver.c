@@ -1,22 +1,18 @@
-#include "MergeSort.h"
+#include "../../include/Sorting/MergeSort.h"
+#include "../../utils/print_utils.h"
 
-void printArray(int *arr, int arrLen)
-{
-    int i = 0;
-    while(i<arrLen)
-        printf("%d ", arr[i++]);
-    printf("\n");
-}
+#define ARRAY_LENGTH 10
 
 int main()
 {
-    int arr[] = {12,11,13,5,6,7,3,3,11,4};
-    int arrLen = sizeof(arr) / sizeof(arr[0]);
+    int arr[ARRAY_LENGTH];
+    for(int i=0; i<ARRAY_LENGTH; i++)
+        arr[i] = rand() % 105;
 
     printf("Before : ");
-    printArray(arr, arrLen);
-    mergeSort(arr, 0, arrLen-1);
+    printArray(arr, ARRAY_LENGTH);
+    mergeSort(arr, 0, ARRAY_LENGTH-1);
 
     printf("After : ");
-    printArray(arr, arrLen);
+    printArray(arr, ARRAY_LENGTH);
 }

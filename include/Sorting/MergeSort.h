@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void merge(int *arr, int start, int mid, int end)

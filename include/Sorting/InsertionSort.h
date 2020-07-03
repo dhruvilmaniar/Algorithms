@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void insertionSort(int *arr, int arrLength)
 {
