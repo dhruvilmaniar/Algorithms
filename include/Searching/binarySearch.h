@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdio.h>
-
+#include <stdlib.h>
 
 int binarySearchArray_Iterative(int *arr, int l_index, int r_index, int target)
 {

@@ -1,13 +1,19 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include "linearSearch.h"
+#include "../../include/Searching/linearSearch.h"
+#include "../../utils/print_utils.h"
 
+#define ARRAY_LENGTH 10
 
 int main()
 {
-    int arr[] = {1,2,3,4,5,6,7,8,9};
+    int arr[ARRAY_LENGTH];
 
-    printf("%d\n", linearSearchArray(arr, sizeof(arr)/sizeof(*arr) ,1));
+    for(int i=0; i<ARRAY_LENGTH; i++)
+        arr[i] = rand() % 103;
+
+    printf("Array before search : ");
+    printArray(arr, sizeof(arr)/sizeof(*arr));
+
+    printf("%d\n", linearSearchArray(arr, sizeof(arr)/sizeof(*arr) ,105));
 
     insertFrontLinkedList(5);
     insertFrontLinkedList(2);
@@ -16,8 +22,8 @@ int main()
 
 
     // linearSearchList is a function that takes int as argument
-    // and returns pointer to structure of type node.
-    // This node is where the queried data is.
+    // and returns pointer to structure of type node, if the argument is found
+    // in the pre exsisting Linked list.
     // Incase of unsuccessfull search, it returns NULL.
-    printf("%d\n", linearSearchList(222));
+    printf("%d\n", linearSearchList(22));
 }
