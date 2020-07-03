@@ -3,25 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+void swap(int *first, int *second)
+{
+    int temp = *first;
+    *first = *second;
+    *second = temp;
+}
+
+
 int partition(int *arr, int start, int end)
 {
-   int i=start-1;
+    int i=start-1;
 
-   for(int j=start; j<end-1; j++)
-   {
-       if (arr[j] <= arr[end-1])
-       {
-           int temp = arr[++i];
-           arr[i] = arr[j];
-           arr[j] = temp;
-       }
-   } 
+    for(int j=start; j<end-1; j++)
+    {
+        if (arr[j] <= arr[end-1])
+            swap(&arr[++i], &arr[j]);       
+    } 
 
-   int temp = arr[++i];
-   arr[i] = arr[end-1];
-   arr[end-1] = temp;
-
-   return i;
+    swap(&arr[++i], &arr[end-1]);
+    return i;
 }
 
 
