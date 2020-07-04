@@ -69,3 +69,37 @@ static void printHeap(int *arr, int arrLength)
         printf("%d ", arr[i++]);
     printf("\n");
 }
+
+
+void increaseValue(int *arr, int index, int newValue, int heapSize)
+{
+    arr[index] = newValue;
+
+    int i = index;
+    while(i>0 && arr[i]>arr[i/2])
+    {
+        swap(&arr[i], &arr[i/2]);
+        i = i/2;
+    }
+}
+
+
+void decreaseValue(int *arr, int index, int newValue, int heapSize)
+{
+    arr[index] = newValue;
+    maxHeapify(arr, index, heapSize);        
+}
+
+
+void modifyValue(int *arr, int index, int newValue, int heapSize)
+{
+    if (index>=heapSize)
+    {
+        printf("Index out of range...\n");
+        return;
+    }
+    if (newValue > arr[index])
+        increaseValue(arr, index, newValue, heapSize);
+    else
+        decreaseValue(arr, index, newValue, heapSize);
+}
