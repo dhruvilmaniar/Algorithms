@@ -2,11 +2,14 @@
 
 #include <stdio.h>
 
-void printArray(int *arr, int arrLen)
+void printArray(const char *str, int *arr, int arrLen)
 {
+    while(*str)
+        printf("%c", *str++);
+    
     int i = 0;
     while(i<arrLen)
-        printf("%d ", arr[i++]);
+        printf(" %d ", arr[i++]);
 
     printf("\n");
 }
