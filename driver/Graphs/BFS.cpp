@@ -63,5 +63,5 @@ int main()
     newGraph.addEdge(2, 3); 
     newGraph.addEdge(3, 3); 
 
-    newGraph.BFS(0);
+    newGraph.BFS(2);
 }
