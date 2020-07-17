@@ -7,6 +7,24 @@ class Graph
         int n_vertices;
         std::list<int> *adj;
 
+
+        void DFS(int start, std::vector<bool> visited)
+        {
+            std::cout << start << " ";
+            visited[start] = true;
+
+            for(auto i = adj[start].begin(); i!= adj[start].end(); i++)
+            {
+                if (!visited[*i])
+                {
+                    visited[*i] = true;
+                    DFS(*i, visited);
+                }
+            }
+        }
+
+
+
     public:
 
         Graph(int n_v) : n_vertices(n_v), adj(new std::list<int>[n_vertices]) {}
@@ -51,9 +69,21 @@ class Graph
         }
 
 
-        void DFS(int start)
+        void DFS_Recursive(int start)
         {
-            std::cout << "DFS from " << start << ": `";
+            std::vector<bool> visited(n_vertices);
+
+            visited[start] = true;
+
+            std::cout << "DFS from " << start << ": ";
+            DFS(start, visited);
+            std::cout << '\n';
+        }
+
+
+        void DFS_Iterative(int start)
+        {
+            std::cout << "DFS from " << start << ": ";
 
             std::vector<bool> visited(n_vertices);
             visited[start] = true;
@@ -98,5 +128,11 @@ int main()
     g.addEdge(3, 3); 
 
     g.BFS(2);
-    g.DFS(2);
+    // O/p : 2 0 3 1
+    g.DFS_Recursive(2);
+    // O/P : 2 0 1 3
+    g.DFS_Iterative(2);
+    // O/P : 2 3 0 1
+
+    // Note : Both are valid permutations.
 }
