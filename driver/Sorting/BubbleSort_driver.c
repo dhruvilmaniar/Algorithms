@@ -11,11 +11,9 @@ int main()
     for (int i=0; i<10; i++)
         arr[i] = rand() % 107;
 
-    printf("Array before : ");
-    printArray(arr, ARRAY_LENGTH);
+    printArray("Array before :", arr, ARRAY_LENGTH);
 
     bubbleSort(arr, ARRAY_LENGTH);
 
-    printf("Array after : ");
-    printArray(arr, ARRAY_LENGTH);
+    printArray("Array after : ",arr, ARRAY_LENGTH);
 }
